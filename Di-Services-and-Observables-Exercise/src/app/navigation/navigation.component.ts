@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  private title:string = "Movie-Finder";
+  private title:string = "Movie Finder";
   constructor() { }
 
   ngOnInit() {

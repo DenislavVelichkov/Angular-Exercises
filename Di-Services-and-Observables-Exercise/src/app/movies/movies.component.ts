@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MoviesService } from '../service/movies.service';
-import IMovie from '../models/Imovie';
+import IMovie from '../models/IMovie';
 import { Observable } from 'rxjs';
 
 @Component({

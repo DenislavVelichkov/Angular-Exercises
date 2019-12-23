@@ -9,8 +9,8 @@ export class ArticleData {
             articles[i] = new Article(
                 data[i].title,
                 data[i].description,
-                data[i].imageUrl,
-                data[i].author)
+                data[i].author,
+                data[i].imageUrl)
         }
 
         return articles;

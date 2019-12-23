@@ -37,9 +37,8 @@ export class ArticleComponent implements OnInit {
 
   toggleImage(): void {
     this.imageIsShown = !this.imageIsShown;
-    this.imageButtonTitle =
-      this.imageButtonTitle === "Show Image" ?
-        "Hide Image" : "Show Image";
+    this.imageButtonTitle = this.imageButtonTitle === "Show Image" 
+    ? "Hide Image" : "Show Image";
   }
 
   hideDesc(): void {

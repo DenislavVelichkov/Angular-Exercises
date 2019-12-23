@@ -23,20 +23,30 @@ export class ArticleComponent implements OnInit {
     this.descToShow = "";
   }
 
-  readMore() {
+  readMore(): void {
     this.articleDescLen += this.symbols;
 
-    if (this.articleDesc.length >= this.articleDescLen) {
+    if (this.articleDescLen >= this.articleDesc.length) {
       this.showHideBtn = true;
       this.showReadMoreBtn = false;
     } else {
-        this.descToShow = this.articleDesc.substring(0, this.articleDescLen)
+      this.descToShow = this.articleDesc.substring(0, this.articleDescLen)
     }
 
   }
 
-  hideDesc() {
+  toggleImage(): void {
+    this.imageIsShown = !this.imageIsShown;
+    this.imageButtonTitle =
+      this.imageButtonTitle === "Show Image" ?
+        "Hide Image" : "Show Image";
+  }
 
+  hideDesc(): void {
+    this.descToShow = "";
+    this.articleDescLen = 0;
+    this.showHideBtn = false;
+    this.showReadMoreBtn = true;
   }
 
   ngOnInit() {

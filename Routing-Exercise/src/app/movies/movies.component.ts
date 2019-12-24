@@ -11,12 +11,16 @@ import { Observable } from 'rxjs';
 export class MoviesComponent implements OnInit {
   private popular: Array<IMovie>;
   private theaters: Array<IMovie>;
+  private kids: Array<IMovie>;
+  private bestDrama: Array<IMovie>;
 
   constructor(private moviesService: MoviesService) { }
 
   ngOnInit() {
     this.moviesService.getPopular().subscribe(data => this.popular = data);
     this.moviesService.getTheaters().subscribe(data => this.theaters = data);
+    this.moviesService.getKidsMovies().subscribe(data => this.kids = data);
+    this.moviesService.getBestDrama().subscribe(data => this.bestDrama = data);
   }
 
 }

@@ -11,12 +11,16 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 // Services
 import { MoviesService } from './service/movies.service';
+import { MovieComponent } from './movie/movie.component';
+import { SelectedMovieComponent } from './selected-movie/selected-movie.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviesComponent,
-    NavigationComponent
+    NavigationComponent,
+    MovieComponent,
+    SelectedMovieComponent
   ],
   imports: [
     BrowserModule,

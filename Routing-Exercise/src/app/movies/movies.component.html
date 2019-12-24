@@ -1,10 +1,12 @@
 <div class="jumbotron">
-    <h4>Brawse Our movies</h4>
-    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-        standard
-        dummy.
-    </p>
-    <button class="btn btn-dark" type="button">Learn More</button>
+    <div class="container">
+        <h1>Find a movie</h1>
+        <p>Search for a movie using the form below:</p>
+        <form action="">
+            <input type="text" class="form-control">
+            <button class="btn btn-dark" type="button">Search</button>
+        </form>
+    </div>
 
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -12,14 +14,8 @@
         </div>
         <div class="panel-body">
             <div *ngIf="popular" class="row">
-                <div *ngFor="let movie of popular.results;let i=index" class="col-md-2">
-                    <div *ngIf="i < 6">
-                        <img *ngIf="movie.poster_path" class="thumbnail"
-                            src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
-                        <h4>{{movie.title}}</h4>
-                        <p>{{movie.release_date}}</p>
-                        <p><a class="btn btn-default" href="#">View Details</a></p>
-                    </div>
+                <div *ngFor="let movie of popular.results; let i=index" class="col-md-2">
+                    <app-movie *ngIf="i < 6" [movie]="movie"></app-movie>
                 </div>
             </div>
         </div>
@@ -30,14 +26,32 @@
         </div>
         <div class="panel-body">
             <div *ngIf="theaters" class="row">
-                <div *ngFor="let movie of theaters.results;let i=index" class="col-md-2">
-                    <div *ngIf="i < 6">
-                        <img *ngIf="movie.poster_path" class="thumbnail"
-                            src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
-                        <h4>{{movie.title}}</h4>
-                        <p>{{movie.release_date}}</p>
-                        <p><a class="btn btn-default" href="#">View Details</a></p>
-                    </div>
+                <div *ngFor="let movie of theaters.results; let i=index" class="col-md-2">
+                    <app-movie *ngIf="i < 6" [movie] = "movie"></app-movie>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Popular Kids Movies</h3>
+        </div>
+        <div class="panel-body">
+            <div *ngIf="kids" class="row">
+                <div *ngFor="let movie of kids.results; let i=index" class="col-md-2">
+                <app-movie *ngIf="i < 6" [movie]="movie"></app-movie>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Best Drama</h3>
+        </div>
+        <div class="panel-body">
+            <div *ngIf="bestDrama" class="row">
+                <div *ngFor="let movie of bestDrama.results; let i=index" class="col-md-2">
+                    <app-movie *ngIf="i < 6" [movie]="movie"></app-movie>
                 </div>
             </div>
         </div>

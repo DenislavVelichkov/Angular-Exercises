@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../service/movies.service';
 import IMovie from '../models/IMovie';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -13,8 +12,17 @@ export class MoviesComponent implements OnInit {
   private theaters: Array<IMovie>;
   private kids: Array<IMovie>;
   private bestDrama: Array<IMovie>;
+  private searchResult: Array<IMovie>;
+  private isSearched: boolean;
 
   constructor(private moviesService: MoviesService) { }
+
+  search(query) {
+    this.moviesService.findAMovie(`${query['search']}`).subscribe(result => {
+      this.searchResult = result;
+      this.isSearched = true;
+    });
+  }
 
   ngOnInit() {
     this.moviesService.getPopular().subscribe(data => this.popular = data);

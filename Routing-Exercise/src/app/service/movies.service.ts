@@ -12,12 +12,18 @@ export class MoviesService {
   private theaters: string = 'discover/movie?primary_release_date.gte=2014-09-15&primary_release_date.lte=2014-10-22';
   private kids: string = 'discover/movie?certification_country=US&certification.lte=G&sort_by=popularity.desc';
   private bestDrama: string = 'discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10';
-  private movie: string = 'movie/'
-  private movieAuth: string = '?api_key='
+  private movie: string = 'movie/';
+  private movieAuth: string = '?api_key=';
   private authentication: string = '&api_key=';
+  private searchMovie: string = 'search/movie?api_key=' + apiKey;
+  private searchCriteria: string = '&query=';
 
 
   constructor(private http: HttpClient) { }
+
+  findAMovie(query: string): Observable<Array<IMovie>> {
+    return this.http.get<Array<IMovie>>(`${this.path}${this.searchMovie}${this.searchCriteria}` + query);
+  }
 
   getPopular(): Observable<Array<IMovie>> {
     return this.http.get<Array<IMovie>>(`${this.path}${this.popular}${this.authentication}` + apiKey);
@@ -38,4 +44,6 @@ export class MoviesService {
   getMovie(id: number): Observable<IMovie> {
     return this.http.get<IMovie>(`${this.path}${this.movie}` + id + `${this.movieAuth}` + apiKey);
   }
+
+  
 }

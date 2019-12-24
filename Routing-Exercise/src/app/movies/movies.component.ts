@@ -7,6 +7,7 @@ import IMovie from '../models/IMovie';
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
+
 export class MoviesComponent implements OnInit {
   private popular: Array<IMovie>;
   private theaters: Array<IMovie>;
@@ -17,8 +18,10 @@ export class MoviesComponent implements OnInit {
 
   constructor(private moviesService: MoviesService) { }
 
-  search(query) {
-    this.moviesService.findAMovie(`${query['search']}`).subscribe(result => {
+  search(query: any) {
+    let queryValue: string = query['search'];
+
+    this.moviesService.findAMovie(queryValue).subscribe(result => {
       this.searchResult = result;
       this.isSearched = true;
     });

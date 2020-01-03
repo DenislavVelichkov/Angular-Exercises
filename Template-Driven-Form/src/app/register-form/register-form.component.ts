@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,7 @@ export class RegisterFormComponent implements OnInit {
   private areaCodes: Array<string> = ["+359", "+721", "+123"];
   @ViewChild('registerForm', { static: false })
   registerForm: NgForm;
+
 
   constructor() { }
 

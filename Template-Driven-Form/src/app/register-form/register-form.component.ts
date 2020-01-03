@@ -12,7 +12,6 @@ export class RegisterFormComponent implements OnInit {
   @ViewChild('registerForm', { static: false })
   registerForm: NgForm;
 
-
   constructor() { }
 
   ngOnInit() { }

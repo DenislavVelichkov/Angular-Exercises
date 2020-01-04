@@ -30,7 +30,7 @@ export class RegisterUserComponent implements OnInit {
   }
 
   register(){
-    console.log(this.registerForm);
+    console.log(this.registerForm.value);
   }
 
   get f() {

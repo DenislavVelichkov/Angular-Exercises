@@ -10,10 +10,10 @@
                     </div>
                     <input name="fullName" class="form-control" placeholder="Full Name" formControlName="fullName">
                 </div>
-                <div class="alert alert-danger" *ngIf="f?.fullName?.touched && f?.fullName?.errors?.required">
+                <div class="alert alert-danger" *ngIf="f.fullName?.touched && f.fullName?.errors?.required">
                     Full name is required!
                 </div>
-                <div class="alert alert-danger" *ngIf="f?.fullName?.errors?.pattern">
+                <div class="alert alert-danger" *ngIf="f.fullName?.errors?.pattern">
                     Full name should contain only letters with 1 capital letter at the beginning and space between them!
                 </div>
                 <div class="form-group input-group">
@@ -22,10 +22,10 @@
                     </div>
                     <input name="email" class="form-control" placeholder="Email Address" type="email" formControlName="email">
                 </div>
-                <div class="alert alert-danger" *ngIf="f?.email?.touched && f?.email?.errors?.required">
+                <div class="alert alert-danger" *ngIf="f.email?.touched && f.email?.errors?.required">
                     Email is required!
                 </div>
-                <div class="alert alert-danger" *ngIf="f?.email?.pattern">
+                <div class="alert alert-danger" *ngIf="f.email?.pattern">
                     Email must be a valid email address!
                 </div>
                 <div class="form-group input-group">
@@ -35,7 +35,7 @@
                     <select name="areaCode" class="custom-select" style="max-width: 120px;" formControlName="areaCode">
                         <option value="{{code}}" *ngFor="let code of areaCodes">{{code}}</option>
                     </select>
-                    <input name="phoneNumber" pattern="\d{9}" class="form-control" placeholder="Phone number" type="text" formControlName="phoneNumber">
+                    <input name="phoneNumber" class="form-control" placeholder="Phone number" type="text" formControlName="phoneNumber">
                 </div>
                 <div class="alert alert-danger" *ngIf="f.phoneNumber?.touched && f.phoneNumber?.errors?.required">
                     Phone number is required!

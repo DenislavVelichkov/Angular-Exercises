@@ -8,29 +8,33 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 })
 export class RegisterUserComponent implements OnInit {
   private areaCodes: Array<string> = ["+359", "+721", "+123"];
-  private form: FormGroup;
+  private registerForm: any; 
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.form = this.fb.group({
+    this.registerForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.pattern(/^[A-Z][a-z]+\s[A-Z][a-z]+$/)]],
-      email: ['', [Validators.required, Validators.email, Validators.pattern('')]],
+      email: ['', [Validators.required, Validators.email]],
       areaCode: ['', [Validators.required]],
-      phoneNumber: ['', [Validators.required, Validators.pattern('')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/\d{9}/)]],
       jobTitle: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.pattern('')]],
-      confirmPassword: ['', [Validators.required, Validators.pattern('')]],
+
+      passwords: this.fb.group({
+        password: ['', [Validators.required]],
+        confirmPassword: ['', [Validators.required]]
+      }),
+
       imageURL: ['', [Validators.required]],
     });
   }
 
   register(){
-    console.log(this.form.value);
+    console.log(this.registerForm);
   }
 
   get f() {
-    return this.form.controls;
+    return this.registerForm.controls;
   }
 
 }

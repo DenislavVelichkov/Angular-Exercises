@@ -1,4 +1,11 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+/**
+ * It's not a good practice to directly access DOM elements via ElementRef.
+Angular is not limited to run only on the browser(could run with service workers)
+ * Services Worker – environment where the DOM is inaccessible
+Use Renderer2 to manipulate DOM elements!!
+ */
+
+import { Directive, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Directive({
@@ -6,7 +13,7 @@ import { NgForm } from '@angular/forms';
 })
 export class ImageValidatorDirective {
 
-  constructor(private elRef: ElementRef, private form: NgForm) { }
+  constructor(private elRef: ElementRef, private form: NgForm, private renderer: Renderer2) { }
 
   @HostListener('input')
   inputHandler() {
@@ -14,10 +21,10 @@ export class ImageValidatorDirective {
     if (element.startsWith('https')
       && element.endsWith('png')
       || element.endsWith('jpg')) {
-      this.elRef.nativeElement.style.borderColor = 'green';
+      this.renderer.setStyle(this.elRef.nativeElement, 'border-color', 'green');
       this.form.control.setErrors(null);
     } else {
-      this.elRef.nativeElement.style.borderColor = 'red';
+      this.renderer.setStyle(this.elRef.nativeElement, 'border-color', 'red');
       this.form.control.setErrors({ imageUrl: true });
     }
   }
